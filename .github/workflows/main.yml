@@ -7,30 +7,45 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
       - name: Server 1
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_1 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_1 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
       - name: Server 2
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_2 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_2 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
       - name: Server 3
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_3 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_3 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
       - name: Server 4
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_4 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_4 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
       - name: Server 5
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_5 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_5 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
       - name: Server 6
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_6 }} > /dev/null 2>&1
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_2 }}
+        run: |
+          curl -X POST https://backboard.railway.app/graphql \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN_2 }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {\nserviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)\n}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_6 }}","environmentId":"${{ secrets.RAILWAY_ENV_2 }}"}}' \
+          > /dev/null 2>&1
