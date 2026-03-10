@@ -1,0 +1,36 @@
+name: Weekly Railway
+on:
+    schedule:
+        - cron: "0 0 * * 1"
+    workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+      - name: Server 1
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_1 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Server 2
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_2 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Server 3
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_3 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Server 4
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_4 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Server 5
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_5 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Server 6
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_6 }} > /dev/null 2>&1
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_2 }}
