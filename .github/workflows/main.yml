@@ -70,3 +70,10 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_9 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
           > /dev/null 2>&1
+      - name: Server 10
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_10 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          > /dev/null 2>&1
