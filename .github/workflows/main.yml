@@ -7,71 +7,50 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Server 1
+      - name: EfazDev API
         run: |
           curl -X POST https://backboard.railway.com/graphql/v2 \
           -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
           -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_1 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 2
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_2 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 3
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_3 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 4
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_4 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 5
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_5 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 7
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_7 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 8
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_8 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
-          > /dev/null 2>&1
-      - name: Server 9
-        run: |
-          curl -X POST https://backboard.railway.com/graphql/v2 \
-          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_9 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_API }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
           > /dev/null 2>&1
       - name: EfazDev Dashboard Save Data
         run: |
           curl -X GET https://dashboard.efaz.dev/api/updating \
           -H "X-Authorization-Key: ${{ secrets.EFAZDEV_DASHBOARD_UPDATE_KEY }}" \
           > /dev/null 2>&1
-      - name: Server 10
+      - name: EfazDev Dashboard
         run: |
           curl -X POST https://backboard.railway.com/graphql/v2 \
           -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
           -H "Content-Type: application/json" \
-          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_10 }}","environmentId":"${{ secrets.RAILWAY_ENV_1 }}"}}' \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_DASHBOARD }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
+      - name: EfazDev Railway API
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_RAILWAYAPI }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
+      - name: EfazDev Proxy
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_PROXY }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
+      - name: EfazDev Personal Assistant
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_ASSISTANT }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
+      - name: EfazDev Website
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_WEBSITE }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
           > /dev/null 2>&1
