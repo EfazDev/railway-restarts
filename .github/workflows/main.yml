@@ -16,7 +16,7 @@ jobs:
           > /dev/null 2>&1
       - name: EfazDev Dashboard Save Data
         run: |
-          curl -X GET https://dashboard.efaz.dev/api/updating \
+          curl -X GET https://db.efaz.dev/api/updating \
           -H "X-Authorization-Key: ${{ secrets.EFAZDEV_DASHBOARD_UPDATE_KEY }}" \
           > /dev/null 2>&1
       - name: EfazDev Dashboard
