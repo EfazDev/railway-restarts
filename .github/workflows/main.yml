@@ -54,3 +54,17 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_WEBSITE }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
           > /dev/null 2>&1
+      - name: EfazDev Cap Captcha
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_CAPTCHA }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
+      - name: EfazDev Cap Redis
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Project-Access-Token: ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"mutation serviceInstanceRedeploy($serviceId: String!, $environmentId: String!) {serviceInstanceRedeploy(serviceId: $serviceId, environmentId: $environmentId)}","variables":{"serviceId":"${{ secrets.RAILWAY_SERVICE_CAP_REDIS }}","environmentId":"${{ secrets.RAILWAY_ENV }}"}}' \
+          > /dev/null 2>&1
